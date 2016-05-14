@@ -1,8 +1,8 @@
 package com.droid.app.extractor.data;
 
-import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable
 import com.droid.app.extractor.AppsApplication
-import com.droid.app.extractor.util.convertUnit
+import com.droid.app.extractor.util.FileUtils
 import java.io.File
 
 data class App(val packageName: String,
@@ -18,7 +18,7 @@ data class App(val packageName: String,
     val size: String
         get() {
             val file: File = File(path)
-            return convertUnit(file.length())
+            return FileUtils.convertUnit(file.length())
         }
 
     val srcFile: File

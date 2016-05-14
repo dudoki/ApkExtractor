@@ -2,6 +2,7 @@ package com.droid.app.extractor.util;
 
 import java.io.*
 import java.nio.channels.FileChannel
+import java.util.*
 
 object FileUtils {
 
@@ -19,6 +20,8 @@ object FileUtils {
      * The number of bytes in a 50 MB.
      */
     internal val FIFTY_MB = ONE_MB * 50
+
+    internal val UNITS = arrayOf("KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB", "DB", "NB")
 
     /**
      * Makes a directory, including any necessary but nonexistent parent
@@ -141,10 +144,10 @@ object FileUtils {
             output = fos.channel
             val size = input!!.size()
             var pos: Long = 0
-            var count: Long = 0
+            var count: Long
             while (pos < size) {
                 count = if (size - pos > FIFTY_MB) FIFTY_MB else size - pos
-                pos += output!!.transferFrom(input, pos, count)
+                pos += output.transferFrom(input, pos, count)
             }
         } finally {
             closeQuietly(output)
@@ -168,5 +171,26 @@ object FileUtils {
             // ignore
         }
 
+    }
+
+    fun convertUnit(value: Long = 0): String {
+        val unit = ONE_KB.toFloat()
+        val length = UNITS.size
+
+        var size: Double = value.toDouble()
+        var index = 0
+
+        if (size < unit) {
+            return String.format(Locale.getDefault(), "%.0f Bytes", size)
+        }
+
+        while (index < length) {
+            size /= unit
+            if (size < unit) {
+                return String.format(Locale.getDefault(), "%.2f %s", size, UNITS[index])
+            }
+            index++
+        }
+        throw IllegalArgumentException();
     }
 }

@@ -38,23 +38,25 @@ class AppsAdapter : RecyclerView.Adapter<AppsAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val app = getItem(position)
-        val context = holder.itemView.context;
+        with(holder) {
+            val app = getItem(position)
+            val context = itemView.context
 
-        holder.icon.setImageDrawable(app.icon)
-        holder.label.text = app.label
-        holder.packageName.text = app.packageName
-        holder.done.visibility = if (app.exported) View.VISIBLE else View.GONE
-        holder.version.text = context.getString(R.string.app_version, app.versionName ?: "1.0")
-        holder.size.text = app.size
-        holder.checkBox.isChecked = app.checked
+            icon.setImageDrawable(app.icon)
+            label.text = app.label
+            packageName.text = app.packageName
+            done.visibility = if (app.exported) View.VISIBLE else View.GONE
+            version.text = context.getString(R.string.app_version, app.versionName ?: "1.0")
+            size.text = app.size
+            checkBox.isChecked = app.checked
 
-        val clickListener = View.OnClickListener {
-            app.checked = !app.checked
-            holder.checkBox.isChecked = app.checked
+            val clickListener = View.OnClickListener {
+                app.checked = !app.checked
+                checkBox.isChecked = app.checked
+            }
+            checkBox.setOnClickListener(clickListener)
+            itemView.setOnClickListener(clickListener)
         }
-        holder.checkBox.setOnClickListener(clickListener)
-        holder.itemView.setOnClickListener(clickListener)
     }
 
     override fun getItemCount(): Int {

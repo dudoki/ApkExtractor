@@ -26,29 +26,29 @@ import com.droid.app.extractor.views.ScrollChildSwipeRefreshLayout
 class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListener {
 
     internal val mSwipeRefreshLayout: ScrollChildSwipeRefreshLayout by lazy {
-        view!!.findViewById(R.id.refresh_layout) as ScrollChildSwipeRefreshLayout
+        view?.findViewById(R.id.refresh_layout) as ScrollChildSwipeRefreshLayout
     }
 
     internal val mDownloadPath: TextView by lazy {
-        view!!.findViewById(R.id.downloadPath) as TextView
+        view?.findViewById(R.id.downloadPath) as TextView
     }
 
     internal val mAppsList: RecyclerView by lazy {
-        view!!.findViewById(R.id.apps_list) as RecyclerView
+        view?.findViewById(R.id.apps_list) as RecyclerView
     }
 
     internal val mNoApps: LinearLayout by lazy {
-        view!!.findViewById(R.id.noApps) as LinearLayout
+        view?.findViewById(R.id.noApps) as LinearLayout
     }
     internal val mNoAppsIcon: ImageView by lazy {
-        view!!.findViewById(R.id.noAppsIcon) as ImageView
+        view?.findViewById(R.id.noAppsIcon) as ImageView
     }
     internal val mNoAppsMain: TextView by lazy {
-        view!!.findViewById(R.id.noAppsMain) as TextView
+        view?.findViewById(R.id.noAppsMain) as TextView
     }
 
-    internal var mPresenter: AppsContract.Presenter? = null
     internal val mListAdapter: AppsAdapter = AppsAdapter()
+    internal var mPresenter: AppsContract.Presenter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v("onCreateView")
@@ -67,7 +67,7 @@ class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListe
         v("onResume")
         super.onResume()
         if (mListAdapter.isEmpty()) {
-            mPresenter!!.start()
+            mPresenter?.start()
         }
     }
 
@@ -81,7 +81,7 @@ class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListe
 
         mSwipeRefreshLayout.setColorSchemeColors(colors)
         mSwipeRefreshLayout.setScrollUpChild(mAppsList)
-        mSwipeRefreshLayout.setOnRefreshListener { mPresenter!!.loadApps() }
+        mSwipeRefreshLayout.setOnRefreshListener { mPresenter?.loadApps() }
     }
 
     internal fun initializeAppsList() {
@@ -120,7 +120,7 @@ class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListe
 
     internal fun prepareExportApps() {
         val apps = mListAdapter.checkedApps
-        mPresenter!!.exportApps(apps)
+        mPresenter?.exportApps(apps)
     }
 
     override fun setLoadingIndicator(active: Boolean) {
@@ -185,13 +185,13 @@ class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListe
 
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
             mProgressDialog = ProgressDialog(activity, theme)
-            mProgressDialog!!.setMessage(getString(R.string.progress_export_prepare))
-            mProgressDialog!!.setCanceledOnTouchOutside(false)
+            mProgressDialog?.setMessage(getString(R.string.progress_export_prepare))
+            mProgressDialog?.setCanceledOnTouchOutside(false)
             return mProgressDialog!!
         }
 
         fun updateMessage(message: CharSequence) {
-            mProgressDialog!!.setMessage(message)
+            mProgressDialog?.setMessage(message)
         }
 
         companion object {

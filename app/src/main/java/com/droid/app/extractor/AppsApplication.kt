@@ -11,7 +11,7 @@ class AppsApplication : Application() {
     companion object {
         val destDir: File
             get() {
-                var directory = File(Environment.getExternalStorageDirectory(), "apks")
+                val directory = File(Environment.getExternalStorageDirectory(), "apks")
                 try {
                     FileUtils.forceMkdir(directory)
                 } catch(ex: Exception) {
