@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">APK Extractor</string>
+
+    <string name="download_path">储存目录:</string>
+    <string name="no_apps_all">您还未安装任何应用耶!</string>
+    <string name="progress_export_prepare">开始应用导出</string>
+    <string name="progress_exporting">%1$s 正在导出&#8230;</string>
+
+    <string name="app_version">v%1$s</string>
+
+    <string name="menu_export">导出</string>
+    <string name="menu_select_all">全选</string>
+</resources>

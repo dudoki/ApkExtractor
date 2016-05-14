@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.droid.app.extractor.views.ScrollChildSwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/refresh_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:id="@+id/appsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffd9d9d9"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="4dp"
+            android:paddingLeft="@dimen/list_item_padding"
+            android:paddingRight="@dimen/list_item_padding"
+            android:paddingTop="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@string/download_path"
+                android:textColor="#f222"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/downloadPath"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginStart="3dp"
+                android:singleLine="true"
+                android:textColor="#ff6c6867"
+                android:textSize="11sp"
+                tools:text="/sdcard/apks" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/apps_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/description"
+            android:scrollbars="vertical" />
+
+        <LinearLayout
+            android:id="@+id/noApps"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/description"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/noAppsIcon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_assignment_turned_in_24dp"
+                tools:ignore="contentDescription" />
+
+            <TextView
+                android:id="@+id/noAppsMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/list_item_padding"
+                android:text="@string/no_apps_all" />
+        </LinearLayout>
+    </RelativeLayout>
+</com.droid.app.extractor.views.ScrollChildSwipeRefreshLayout>

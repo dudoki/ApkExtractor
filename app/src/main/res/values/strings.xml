@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">APK Extractor</string>
+
+    <string name="download_path">Download Path:</string>
+    <string name="no_apps_all">You have no Apps!</string>
+    <string name="progress_export_prepare">Start exporting</string>
+    <string name="progress_exporting">%1$s is exporting&#8230;</string>
+
+    <string name="app_version">v%1$s</string>
+
+    <string name="menu_export">Export</string>
+    <string name="menu_select_all">Select All</string>
+</resources>

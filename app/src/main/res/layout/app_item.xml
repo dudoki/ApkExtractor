@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="68dp"
+    android:background="?attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/list_item_padding"
+        android:layout_marginStart="@dimen/list_item_padding"
+        android:scaleType="fitXY"
+        tools:background="@drawable/bg_default"
+        tools:ignore="contentDescription" />
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/list_item_padding"
+        android:layout_marginRight="@dimen/list_item_padding"
+        android:focusable="false" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/icon"
+        android:layout_toLeftOf="@id/checkbox"
+        android:layout_toRightOf="@id/icon"
+        android:layout_toStartOf="@id/checkbox"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="#ff3c3837"
+            android:textSize="15sp"
+            tools:text="测试" />
+
+        <ImageView
+            android:id="@+id/done"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:layout_alignBottom="@id/label"
+            android:layout_alignTop="@id/label"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/label"
+            android:layout_toRightOf="@id/label"
+            android:src="@drawable/ic_done"
+            android:visibility="visible"
+            tools:ignore="contentDescription" />
+
+        <TextView
+            android:id="@+id/packageName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/label"
+            android:singleLine="true"
+            android:textColor="#ffa5a5a5"
+            android:textSize="11sp"
+            tools:text="com.droid.app" />
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/packageName"
+            android:singleLine="true"
+            android:textColor="#ffa5a5a5"
+            android:textSize="11sp"
+            tools:text="v1.0" />
+
+        <TextView
+            android:id="@+id/size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/packageName"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/version"
+            android:layout_toRightOf="@id/version"
+            android:singleLine="true"
+            android:textColor="#ffa5a5a5"
+            android:textSize="11sp"
+            tools:text="0.5MB" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/icon"
+        android:layout_toRightOf="@id/icon"
+        android:background="#ffe9e9e9" />
+
+</RelativeLayout>
