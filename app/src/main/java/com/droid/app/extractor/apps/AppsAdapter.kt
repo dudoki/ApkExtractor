@@ -92,22 +92,26 @@ class AppsAdapter : RecyclerView.Adapter<AppsAdapter.ViewHolder>() {
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        internal val icon: ImageView
-        internal val label: TextView
-        internal val version: TextView
-        internal val packageName: TextView
-        internal val size: TextView
-        internal val checkBox: CheckBox
-        internal val done: ImageView
-
-        init {
-            icon = itemView.findViewById(R.id.icon) as ImageView
-            label = itemView.findViewById(R.id.label) as TextView
-            version = itemView.findViewById(R.id.version) as TextView
-            packageName = itemView.findViewById(R.id.packageName) as TextView
-            size = itemView.findViewById(R.id.size) as TextView
-            checkBox = itemView.findViewById(R.id.checkbox) as CheckBox
-            done = itemView.findViewById(R.id.done) as ImageView
+        internal val icon: ImageView by lazy {
+            itemView.findViewById(R.id.icon) as ImageView
+        }
+        internal val label: TextView by lazy {
+            itemView.findViewById(R.id.label) as TextView
+        }
+        internal val version: TextView by lazy {
+            itemView.findViewById(R.id.version) as TextView
+        }
+        internal val packageName: TextView by lazy {
+            itemView.findViewById(R.id.packageName) as TextView
+        }
+        internal val size: TextView by lazy {
+            itemView.findViewById(R.id.size) as TextView
+        }
+        internal val checkBox: CheckBox by lazy {
+            itemView.findViewById(R.id.checkbox) as CheckBox
+        }
+        internal val done: ImageView by lazy {
+            itemView.findViewById(R.id.done) as ImageView
         }
     }
 }

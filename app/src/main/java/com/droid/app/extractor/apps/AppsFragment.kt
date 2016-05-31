@@ -81,7 +81,9 @@ class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListe
 
         mSwipeRefreshLayout.setColorSchemeColors(colors)
         mSwipeRefreshLayout.setScrollUpChild(mAppsList)
-        mSwipeRefreshLayout.setOnRefreshListener { mPresenter?.loadApps() }
+        mSwipeRefreshLayout.setOnRefreshListener {
+            mPresenter?.loadApps()
+        }
     }
 
     internal fun initializeAppsList() {

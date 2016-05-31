@@ -3,6 +3,7 @@ package com.droid.app.extractor.data;
 import android.graphics.drawable.Drawable
 import com.droid.app.extractor.AppsApplication
 import com.droid.app.extractor.util.FileUtils
+import com.droid.app.extractor.util.e
 import java.io.File
 
 data class App(val packageName: String,
@@ -31,4 +32,12 @@ data class App(val packageName: String,
         get() {
             return destFile.exists();
         }
+
+    internal fun export() {
+        try {
+            FileUtils.copyFile(srcFile, destFile)
+        } catch (ex: Exception) {
+            e(ex.message, ex.cause)
+        }
+    }
 }
