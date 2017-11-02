@@ -1,4 +1,4 @@
-package com.droid.app.extractor.data;
+package com.droid.app.extractor.data
 
 import android.graphics.drawable.Drawable
 import com.droid.app.extractor.AppsApplication
@@ -9,7 +9,7 @@ import java.io.File
 data class App(val packageName: String,
                val icon: Drawable,
                val label: String,
-               internal val path: String,
+               private val path: String,
                val versionName: String?) {
 
     var checked: Boolean = false
@@ -18,19 +18,19 @@ data class App(val packageName: String,
 
     val size: String
         get() {
-            val file: File = File(path)
+            val file = File(path)
             return FileUtils.convertUnit(file.length())
         }
 
-    val srcFile: File
+    private val srcFile: File
         get() = File(path)
 
-    val destFile: File
-        get() = File(AppsApplication.destDir, "${label}-v${versionName}.apk")
+    private val destFile: File
+        get() = File(AppsApplication.destDir, "$label-v$versionName.apk")
 
     val exported: Boolean
         get() {
-            return destFile.exists();
+            return destFile.exists()
         }
 
     internal fun export() {

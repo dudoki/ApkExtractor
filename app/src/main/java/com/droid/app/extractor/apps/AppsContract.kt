@@ -10,7 +10,7 @@ interface AppsContract {
 
         fun loadApps()
 
-        fun exportApps(apps: List<App>)
+        fun exportApps(apps: Iterable<App>)
 
     }
 

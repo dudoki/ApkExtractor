@@ -3,7 +3,7 @@ package com.droid.app.extractor.apps
 import com.droid.app.extractor.data.App
 import com.droid.app.extractor.data.source.AppsDataSource
 
-class AppsPresenter(internal var mAppsDataSource: AppsDataSource, internal var mAppsView: AppsContract.View) : AppsContract.Presenter {
+class AppsPresenter(private var mAppsDataSource: AppsDataSource, internal var mAppsView: AppsContract.View) : AppsContract.Presenter {
 
     init {
         this.mAppsView.setPresenter(this)
@@ -17,7 +17,7 @@ class AppsPresenter(internal var mAppsDataSource: AppsDataSource, internal var m
         loadApps(true)
     }
 
-    internal fun loadApps(showLoadingUI: Boolean) {
+    private fun loadApps(showLoadingUI: Boolean) {
         if (showLoadingUI) {
             mAppsView.setLoadingIndicator(true)
         }
@@ -41,11 +41,11 @@ class AppsPresenter(internal var mAppsDataSource: AppsDataSource, internal var m
         }
     }
 
-    override fun exportApps(apps: List<App>) {
+    override fun exportApps(apps: Iterable<App>) {
         exportApps(apps, true)
     }
 
-    internal fun exportApps(apps: List<App>, showLoadingUI: Boolean) {
+    private fun exportApps(apps: Iterable<App>, showLoadingUI: Boolean) {
         if (showLoadingUI) {
             mAppsView.setExportIndicator(true)
         }

@@ -22,5 +22,5 @@ interface AppsDataSource {
 
     fun getApps(callback: LoadAppsCallback)
 
-    fun exportApps(apps: List<App>, callback: ExportAppsCallback)
+    fun exportApps(apps: Iterable<App>, callback: ExportAppsCallback)
 }

@@ -1,4 +1,4 @@
-package com.droid.app.extractor.util;
+package com.droid.app.extractor.util
 
 import java.io.*
 import java.nio.channels.FileChannel
@@ -9,19 +9,19 @@ object FileUtils {
     /**
      * The number of bytes in a kilobyte.
      */
-    internal val ONE_KB: Long = 1024
+    private val ONE_KB: Long = 1024
 
     /**
      * The number of bytes in a megabyte.
      */
-    internal val ONE_MB = ONE_KB * ONE_KB
+    private val ONE_MB = ONE_KB * ONE_KB
 
     /**
      * The number of bytes in a 50 MB.
      */
-    internal val FIFTY_MB = ONE_MB * 50
+    private val FIFTY_MB = ONE_MB * 50
 
-    internal val UNITS = arrayOf("KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB", "DB", "NB")
+    private val UNITS = arrayOf("KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB", "DB", "NB")
 
     /**
      * Makes a directory, including any necessary but nonexistent parent
@@ -34,18 +34,18 @@ object FileUtils {
      * @throws NullPointerException if the directory is <code>null</code>
      * @throws IOException          if the directory cannot be created or the file already exists but is not a directory
      */
-    fun forceMkdir(directory: File): Unit {
+    fun forceMKDir(directory: File) {
         if (directory.exists()) {
             if (!directory.isDirectory) {
-                val message = "File $directory exists and is not a directory. Unable to create directory.";
-                throw IOException(message);
+                val message = "File $directory exists and is not a directory. Unable to create directory."
+                throw IOException(message)
             }
         } else {
             if (!directory.mkdirs()) {
                 // Double-check that some other thread or process hasn't made the directory in the background
                 if (!directory.isDirectory) {
-                    val message = "Unable to create directory $directory";
-                    throw IOException(message);
+                    val message = "Unable to create directory $directory"
+                    throw IOException(message)
                 }
             }
         }
@@ -191,6 +191,6 @@ object FileUtils {
             }
             index++
         }
-        throw IllegalArgumentException();
+        throw IllegalArgumentException()
     }
 }

@@ -8,13 +8,11 @@ import android.view.View
 
 class ScrollChildSwipeRefreshLayout : SwipeRefreshLayout {
 
-    internal var mScrollUpChild: View? = null
+    private var mScrollUpChild: View? = null
 
-    constructor(context: Context) : super(context) {
-    }
+    constructor(context: Context) : super(context)
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-    }
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
     override fun canChildScrollUp(): Boolean {
         if (mScrollUpChild != null) {

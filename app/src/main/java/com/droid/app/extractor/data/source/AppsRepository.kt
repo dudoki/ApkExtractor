@@ -20,15 +20,15 @@ class AppsRepository internal constructor(internal val mContext: Context) : Apps
         }.execute()
     }
 
-    override fun exportApps(apps: List<App>, callback: AppsDataSource.ExportAppsCallback) {
+    override fun exportApps(apps: Iterable<App>, callback: AppsDataSource.ExportAppsCallback) {
         object : AsyncTask<Void, App, Void>() {
 
             override fun doInBackground(vararg params: Void): Void? {
-                if (apps.isEmpty()) {
+                if (apps is java.util.List && apps.isEmpty()) {
                     return null
                 }
 
-                for (app in apps) {
+                apps.forEach { app ->
                     with(app) {
                         processed = false
                         publishProgress(app)
@@ -37,7 +37,6 @@ class AppsRepository internal constructor(internal val mContext: Context) : Apps
                         publishProgress(app)
                     }
                 }
-
                 return null
             }
 

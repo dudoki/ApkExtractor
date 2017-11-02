@@ -25,30 +25,30 @@ import com.droid.app.extractor.views.ScrollChildSwipeRefreshLayout
 
 class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListener {
 
-    internal val mSwipeRefreshLayout: ScrollChildSwipeRefreshLayout by lazy {
-        view?.findViewById(R.id.refresh_layout) as ScrollChildSwipeRefreshLayout
+    private val mSwipeRefreshLayout: ScrollChildSwipeRefreshLayout by lazy {
+        view!!.findViewById<ScrollChildSwipeRefreshLayout>(R.id.refresh_layout)
     }
 
-    internal val mDownloadPath: TextView by lazy {
-        view?.findViewById(R.id.downloadPath) as TextView
+    private val mDownloadPath: TextView by lazy {
+        view!!.findViewById<TextView>(R.id.downloadPath)
     }
 
-    internal val mAppsList: RecyclerView by lazy {
-        view?.findViewById(R.id.apps_list) as RecyclerView
+    private val mAppsList: RecyclerView by lazy {
+        view!!.findViewById<RecyclerView>(R.id.apps_list)
     }
 
-    internal val mNoApps: LinearLayout by lazy {
-        view?.findViewById(R.id.noApps) as LinearLayout
+    private val mNoApps: LinearLayout by lazy {
+        view!!.findViewById<LinearLayout>(R.id.noApps)
     }
-    internal val mNoAppsIcon: ImageView by lazy {
-        view?.findViewById(R.id.noAppsIcon) as ImageView
+    private val mNoAppsIcon: ImageView by lazy {
+        view!!.findViewById<ImageView>(R.id.noAppsIcon)
     }
-    internal val mNoAppsMain: TextView by lazy {
-        view?.findViewById(R.id.noAppsMain) as TextView
+    private val mNoAppsMain: TextView by lazy {
+        view!!.findViewById<TextView>(R.id.noAppsMain)
     }
 
-    internal val mListAdapter: AppsAdapter = AppsAdapter()
-    internal var mPresenter: AppsContract.Presenter? = null
+    private val mListAdapter: AppsAdapter = AppsAdapter()
+    private var mPresenter: AppsContract.Presenter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v("onCreateView")
@@ -71,11 +71,11 @@ class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListe
         }
     }
 
-    internal fun initializeDownloadPath() {
+    private fun initializeDownloadPath() {
         mDownloadPath.text = AppsApplication.destDir.absolutePath
     }
 
-    internal fun initializeSwipeRefreshLayout() {
+    private fun initializeSwipeRefreshLayout() {
 
         val colors = ResourcesCompat.getColor(resources, R.color.colorPrimary, activity.theme)
 
@@ -86,7 +86,7 @@ class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListe
         }
     }
 
-    internal fun initializeAppsList() {
+    private fun initializeAppsList() {
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         mAppsList.layoutManager = layoutManager
         mAppsList.setHasFixedSize(true)
@@ -99,8 +99,8 @@ class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListe
         initializeMenu()
     }
 
-    internal fun initializeMenu() {
-        val toolbar = activity.findViewById(R.id.toolbar) as Toolbar
+    private fun initializeMenu() {
+        val toolbar = activity.findViewById<Toolbar>(R.id.toolbar)
         toolbar.inflateMenu(R.menu.apps_fragment_menu)
         toolbar.setOnMenuItemClickListener(this)
     }
@@ -120,7 +120,7 @@ class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListe
         return false
     }
 
-    internal fun prepareExportApps() {
+    private fun prepareExportApps() {
         val apps = mListAdapter.checkedApps
         mPresenter?.exportApps(apps)
     }
@@ -152,7 +152,7 @@ class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListe
         showNoAppsViews("You have no Apps!", R.drawable.ic_assignment_turned_in_24dp)
     }
 
-    internal fun showNoAppsViews(mainText: String, iconRes: Int) {
+    private fun showNoAppsViews(mainText: String, iconRes: Int) {
         mNoAppsIcon.setImageResource(iconRes)
         mNoAppsMain.text = mainText
 
@@ -181,10 +181,6 @@ class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListe
 
         private var mProgressDialog: ProgressDialog? = null
 
-        override fun getTheme(): Int {
-            return super.getTheme()
-        }
-
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
             mProgressDialog = ProgressDialog(activity, theme)
             mProgressDialog?.setMessage(getString(R.string.progress_export_prepare))
@@ -198,7 +194,7 @@ class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListe
 
         companion object {
 
-            internal val TAG = ExportProgress::class.java.name
+            private val TAG = ExportProgress::class.java.name
 
             fun show(fragmentManager: FragmentManager) {
                 val progress = ExportProgress()

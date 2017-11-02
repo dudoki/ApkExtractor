@@ -13,7 +13,7 @@ class AppsApplication : Application() {
             get() {
                 val directory = File(Environment.getExternalStorageDirectory(), "apks")
                 try {
-                    FileUtils.forceMkdir(directory)
+                    FileUtils.forceMKDir(directory)
                 } catch(ex: Exception) {
                     e(ex.message, ex)
                 }

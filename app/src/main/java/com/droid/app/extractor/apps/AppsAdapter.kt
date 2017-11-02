@@ -9,22 +9,21 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.droid.app.extractor.R
 import com.droid.app.extractor.data.App
-import java.util.*
 
 class AppsAdapter : RecyclerView.Adapter<AppsAdapter.ViewHolder>() {
 
-    internal var mApps: List<App> = ArrayList(0)
+    private var mApps: List<App> = ArrayList(0)
 
     fun replaceData(apps: List<App>) {
         setList(apps)
         notifyDataSetChanged()
     }
 
-    internal fun setList(apps: List<App>) {
+    private fun setList(apps: List<App>) {
         mApps = apps
     }
 
-    internal fun getItem(index: Int): App {
+    private fun getItem(index: Int): App {
         return mApps[index]
     }
 
@@ -63,16 +62,9 @@ class AppsAdapter : RecyclerView.Adapter<AppsAdapter.ViewHolder>() {
         return mApps.size
     }
 
-    val checkedApps: List<App>
+    val checkedApps: Iterable<App>
         get() {
-            val apps = ArrayList<App>()
-            for (app in mApps) {
-                if (app.checked) {
-                    apps.add(app)
-                }
-            }
-
-            return apps
+            return mApps.filter { it.checked }
         }
 
     fun selectAllApps() {
@@ -83,7 +75,7 @@ class AppsAdapter : RecyclerView.Adapter<AppsAdapter.ViewHolder>() {
     }
 
     fun findAppPosition(app: App): Int {
-        for (index in mApps.indices) {
+        mApps.indices.forEach { index ->
             if (app.packageName === mApps[index].packageName) {
                 return index
             }
@@ -93,25 +85,25 @@ class AppsAdapter : RecyclerView.Adapter<AppsAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         internal val icon: ImageView by lazy {
-            itemView.findViewById(R.id.icon) as ImageView
+            itemView.findViewById<ImageView>(R.id.icon)
         }
         internal val label: TextView by lazy {
-            itemView.findViewById(R.id.label) as TextView
+            itemView.findViewById<TextView>(R.id.label)
         }
         internal val version: TextView by lazy {
-            itemView.findViewById(R.id.version) as TextView
+            itemView.findViewById<TextView>(R.id.version)
         }
         internal val packageName: TextView by lazy {
-            itemView.findViewById(R.id.packageName) as TextView
+            itemView.findViewById<TextView>(R.id.packageName)
         }
         internal val size: TextView by lazy {
-            itemView.findViewById(R.id.size) as TextView
+            itemView.findViewById<TextView>(R.id.size)
         }
         internal val checkBox: CheckBox by lazy {
-            itemView.findViewById(R.id.checkbox) as CheckBox
+            itemView.findViewById<CheckBox>(R.id.checkbox)
         }
         internal val done: ImageView by lazy {
-            itemView.findViewById(R.id.done) as ImageView
+            itemView.findViewById<ImageView>(R.id.done)
         }
     }
 }

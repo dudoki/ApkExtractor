@@ -29,11 +29,11 @@ class AppsActivity : BaseActivity() {
     }
 
     private val action = object : PermissionsResultAction() {
-        override fun onGranted(): Unit {
+        override fun onGranted() {
             v("OK")
         }
 
-        override fun onDenied(permission: String): Unit {
+        override fun onDenied(permission: String) {
             v("$permission is denied")
             finish()
         }
