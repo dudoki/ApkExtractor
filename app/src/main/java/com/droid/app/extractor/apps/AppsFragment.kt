@@ -77,7 +77,7 @@ class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListe
 
     private fun initializeSwipeRefreshLayout() {
 
-        val colors = ResourcesCompat.getColor(resources, R.color.colorPrimary, activity.theme)
+        val colors = ResourcesCompat.getColor(resources, R.color.colorPrimary, activity?.theme)
 
         mSwipeRefreshLayout.setColorSchemeColors(colors)
         mSwipeRefreshLayout.setScrollUpChild(mAppsList)
@@ -100,9 +100,9 @@ class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListe
     }
 
     private fun initializeMenu() {
-        val toolbar = activity.findViewById<Toolbar>(R.id.toolbar)
-        toolbar.inflateMenu(R.menu.apps_fragment_menu)
-        toolbar.setOnMenuItemClickListener(this)
+        val toolbar = activity?.findViewById<Toolbar>(R.id.toolbar)
+        toolbar?.inflateMenu(R.menu.apps_fragment_menu)
+        toolbar?.setOnMenuItemClickListener(this)
     }
 
     override fun onMenuItemClick(item: MenuItem): Boolean {
@@ -135,9 +135,9 @@ class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListe
 
     override fun setExportIndicator(active: Boolean) {
         if (active) {
-            ExportProgress.show(fragmentManager)
+            ExportProgress.show(fragmentManager!!)
         } else {
-            ExportProgress.dismiss(fragmentManager)
+            ExportProgress.dismiss(fragmentManager!!)
         }
     }
 
@@ -161,7 +161,7 @@ class AppsFragment : Fragment(), AppsContract.View, Toolbar.OnMenuItemClickListe
     }
 
     override fun showExportProgress(app: App) {
-        val progress = ExportProgress.find(fragmentManager)
+        val progress = ExportProgress.find(fragmentManager!!)
         progress?.updateMessage(getString(R.string.progress_exporting, app.label))
     }
 
